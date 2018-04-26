@@ -1,0 +1,62 @@
+
+<div class="content-container" ng-controller="ViewPaymentChannelController">
+    <ul class="breadcrumb">
+        <li><a href="#/organization">{{'label.anchor.organization' | translate}}</a></li>
+        <li class="active">{{'label.anchor.paymentchannels' | translate}}</li>
+    </ul>
+    <api-validate></api-validate>
+    <script type="text/ng-template" id="deletePaymentChannel.html">
+        <div class="modal-header silver">
+            <h3 class="bolder">{{'label.heading.delete' | translate}}</h3>
+        </div>
+        <div class="modal-body ">
+
+            <br>
+            <button class="btn btn-warning" ng-click="cancel()">{{'label.button.cancel' | translate}}</button>
+            <button class="btn btn-primary" ng-click="delete()">{{'label.button.confirm' | translate}}</button>
+        </div>
+    </script>
+    <div class="card">
+        <div class="content">
+            <div class="toolbar">
+                <h4>{{'label.anchor.paymentchannels' | translate}}</h4>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <input ng-model="filterText" type="text" class="form-control" ng-keyup="onFilter()" placeholder="{{'label.input.filterbyname' | translate}}">
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <a href="#/createpaymentchannel" class="btn btn-primary pull-right" has-permission='CREATE_PAYMENTCHANNEL'><i class="fa fa-plus fa fa-large"></i>{{'label.button.createpaymentchannel' | translate}}</a>
+                </div>
+            </div>
+            <br>
+            <table class="table">
+                <thead>
+                <tr class="graybg">
+                    <th>{{'label.heading.channelname' | translate}}</th>
+                    <th>{{'label.heading.channelendpoint' | translate}}</th>
+                    <th>{{'label.heading.paymenttype' | translate}}</th>
+                    <th>{{'label.heading.requestqueue' | translate}}</th>
+                    <th>{{'label.heading.responsequeue' | translate}}</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="pointer-main" data-ng-repeat="paymentChannel in paymentChannels">
+                    <td class="pointer" data-ng-click="showEdit(paymentChannel.id)">{{paymentChannel.channelName}}</td>
+                    <td class="pointer" data-ng-click="showEdit(paymentChannel.id)">{{paymentChannel.channelBrokerEndpoint}}</td>
+                    <td class="pointer" data-ng-click="showEdit(paymentChannel.id)">{{paymentChannel.paymentType.value}}</td>
+                    <td class="pointer" data-ng-click="showEdit(paymentChannel.id)">{{paymentChannel.requestQueue}}</td>
+                    <td class="pointer" data-ng-click="showEdit(paymentChannel.id)">{{paymentChannel.responseQueue}}</td>
+                    <td class="col-md-1">
+                        <a class="delete" type="button"
+                                data-ng-click="deletePaymentChannel(paymentChannel.id)"><i class="fa fa-times-circle fa-2x"></i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

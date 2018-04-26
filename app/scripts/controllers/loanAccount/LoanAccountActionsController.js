@@ -14,6 +14,7 @@
             scope.isTransaction = false;
             scope.showPaymentDetails = false;
             scope.paymentTypes = [];
+            scope.paymentChannels = [];
             scope.form = {};
             scope.form.expectedDisbursementDate = [];
             scope.disbursementDetails = [];
@@ -177,6 +178,12 @@
                             scope.showEMIAmountField = true;
                         }
                     });
+                    resourceFactory.paymentChannelsResource.getAll({}, function (data) {
+                        scope.paymentChannels = data;
+                        if (data.length > 0) {
+                            scope.formData.paymentChannelId = data[0].id;
+                        }
+                    });
                     scope.title = 'label.heading.disburseloanaccount';
                     scope.labelName = 'label.input.disbursedondate';
                     scope.isTransaction = true;
@@ -193,6 +200,9 @@
                             scope.formData.fixedEmiAmount = data.fixedEmiAmount;
                             scope.showEMIAmountField = true;
                         }
+                    });
+                    resourceFactory.paymentChannelsResource.getAll({}, function (data) {
+                        scope.paymentChannels = data.paymentChannels;
                     });
                     scope.title = 'label.heading.disburseloanaccount';
                     scope.labelName = 'label.input.disbursedondate';

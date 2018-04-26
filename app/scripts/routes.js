@@ -917,6 +917,15 @@
             .when('/editsmscampaign/:campaignId', {
                 templateUrl: 'views/organization/smscampaigns/editsmscampaign.html'
             })
+            .when('/paymentchannels', {
+                templateUrl: 'views/organization/paymentchannels/paymentchannels.html'
+            })
+            .when('/createpaymentchannel', {
+                templateUrl: 'views/organization/paymentchannels/createpaymentchannel.html'
+            })
+            .when('/editpaymentchannel/:channelId', {
+                templateUrl: 'views/organization/paymentchannels/editpaymentchannel.html'
+            })
             .when('/entitydatatablechecks', {
                 templateUrl: 'views/organization/entitydatatablechecks/entitydatatablechecks.html'
             })
