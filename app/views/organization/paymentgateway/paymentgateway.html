@@ -1,0 +1,59 @@
+
+<div class="content-container" ng-controller="PaymentGatewayController">
+    <ul class="breadcrumb">
+        <li><a href="#/organization">{{'label.anchor.organization' | translate}}</a></li>
+        <li class="active">{{'label.anchor.paymentgateway' | translate}}</li>
+    </ul>
+    <api-validate></api-validate>
+    <div class="card">
+        <div class="content">
+            <div class="toolbar">
+                <h4>{{'label.anchor.paymentgateway' | translate}}</h4>
+            </div>
+            <br>
+            <form name="editpaymentgateway" novalidate="" class="form-horizontal" rc-submit="submit()">
+                <api-validate></api-validate>
+                <fieldset>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="isActive">{{'label.heading.gatewayactive' | translate}}</label>
+                        <div class="col-sm-3">
+                            <input type="checkbox" id="isActive" name="isActive" ng-model="formData.isActive" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" >{{'label.heading.gatewayendpoint' | translate}}</label>
+
+                        <div class="col-sm-3">
+                            <input id="gatewayUrl" name="gatewayUrl" ng-model="formData.gatewayUrl"
+                                        type="text" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" for="payType">{{ 'label.input.paymenttype' |
+                            translate}}</label>
+
+                        <div class="col-sm-3">
+                            <select id="paymentType" ng-model="formData.paymentType" class="form-control" 
+                                    ng-options="payment.id as payment.name for payment in allPaymentTypes" value="{{payment.id}}"
+                                    chosen="allPaymentTypes"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2" >{{'label.heading.gatewayuser' | translate}}</label>
+
+                        <div class="col-sm-3">
+                            <select id="userId" ng-model="formData.userId" class="form-control"
+                                ng-options="user.id as user.username for user in allUsers" value="{{user.id}}"
+                                chosen="allUsers">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-offset-2 paddedleft">
+                        <a id="cancel" href="#/paymentgateway" class="btn btn-default">{{'label.button.cancel' | translate}}</a>
+                        <button id="save" type="submit" class="btn btn-primary">{{'label.button.save' | translate}}</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

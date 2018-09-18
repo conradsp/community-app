@@ -532,12 +532,13 @@
                         get: {method: 'GET' , params: {paymentTypeId: '@paymentTypeId'}},
                         update: {method: 'PUT', params: {paymentTypeId: '@paymentTypeId'}}
                     }),
-                    paymentChannelsResource: defineResource(apiVer + "/paymentchannels/:channelId/:additionalParam", {paymentChannelId: "@paymentChannelId"}, {
+                    paymentChannelsResource: defineResource(apiVer + "/paymentchannels/", {}, {
                         getAll: {method: 'GET', params: {}, isArray: true},
-                        get: {method: 'GET', params: {channelId: '@channelId'}},
+                    }),
+                    paymentGatewayResource: defineResource(apiVer + "/paymentgateway/", {}, {
+                        get: {method: 'GET', params: {}},
                         save: {method: 'POST', params: {}},
-                        update: {method: 'PUT', params: {channelId: '@channelId'}},
-                        delete: {method: 'DELETE', params: {channelId: '@channelId'}}
+                        update: {method: 'PUT', params: {}},
                     }),
                     externalServicesS3Resource: defineResource(apiVer + "/externalservice/S3", {},{
                         get: {method: 'GET', params: {}, isArray : true},
