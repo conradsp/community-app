@@ -256,8 +256,8 @@
                                 translate}}</label>
                             <div class="col-sm-3">
                                 <select id="paymentChannelId" ng-model="formData.paymentChannelId" class="form-control"
-                                    ng-options="paymentChannel.id as paymentChannel.channelName for paymentChannel in paymentChannels"
-                                    value="{{paymentChannel.id}}">
+                                    ng-options="paymentChannel.vendorId as paymentChannel.vendorName for paymentChannel in paymentChannels"
+                                    value="{{paymentChannel.vendorId}}">
                                     <option selected="selected" value="">None</option>
                                 </select>
                             </div>

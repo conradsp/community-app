@@ -533,7 +533,7 @@
                         update: {method: 'PUT', params: {paymentTypeId: '@paymentTypeId'}}
                     }),
                     paymentChannelsResource: defineResource(apiVer + "/paymentchannels/", {}, {
-                        getAll: {method: 'GET', params: {}, isArray: true},
+                        getAll: {method: 'GET', params: {}, isArray: false},
                     }),
                     paymentGatewayResource: defineResource(apiVer + "/paymentgateway/", {}, {
                         get: {method: 'GET', params: {}},

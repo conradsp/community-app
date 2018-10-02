@@ -178,12 +178,19 @@
                             scope.showEMIAmountField = true;
                         }
                     });
-                    resourceFactory.paymentChannelsResource.getAll({}, function (data) {
-                        scope.paymentChannels = data;
-                        if (data.length > 0) {
-                            scope.formData.paymentChannelId = data[0].id;
+                    resourceFactory.paymentGatewayResource.get({}, function(data) {
+                        if (data.isActive) {
+                            // Go get the defined channels - Fineract will call the gateway for us
+                            resourceFactory.paymentChannelsResource.getAll({}, function (data) {
+                                console.log(data)
+                                scope.paymentChannels = data.data;
+                                if (data.length > 0) {
+                                    scope.formData.paymentChannelId = data[0].id;
+                                }
+                            });
                         }
-                    });
+                    })
+                    
                     scope.title = 'label.heading.disburseloanaccount';
                     scope.labelName = 'label.input.disbursedondate';
                     scope.isTransaction = true;
