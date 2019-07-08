@@ -9,10 +9,8 @@ RUN apt-get update && apt-get install -y nodejs
 RUN npm install -g bower grunt-cli
 RUN gem install bundler
 
-RUN mkdir /community-app
-WORKDIR /community-app
-
 COPY . /community-app
+WORKDIR /community-app
 
 RUN bower install --allow-root
 RUN npm install
